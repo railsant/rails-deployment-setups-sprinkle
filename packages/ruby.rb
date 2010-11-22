@@ -1,6 +1,8 @@
 package :ruby do
   description 'Ruby Virtual Machine'
+  # Change the Ruby Version Below
   version '1.8.7'
+  # Change the Version Patchlevel Below
   patchlevel '302'
   source "ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-#{version}-p#{patchlevel}.tar.gz"
   requires :ruby_dependencies

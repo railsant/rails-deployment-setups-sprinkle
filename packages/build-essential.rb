@@ -17,4 +17,15 @@ package :build_essential do
     has_executable '/bin/bash'
     has_symlink    '/bin/sh', '/bin/bash'
   end
+
+  requires :apt_sources
+end
+
+package :apt_sources do
+  description 'Update apt-get sources list'
+  noop do
+    pre :install, 'sudo rm -f /etc/apt/sources.list && sudo touch /etc/apt/sources.list'
+  end
+  
+  push_text File.read("#{File.dirname(__FILE__)}/../configurations/apt"), '/etc/apt/sources.list', :sudo => true
 end

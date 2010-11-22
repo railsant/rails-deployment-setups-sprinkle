@@ -1,6 +1,7 @@
 package :rails do
   requires :rubygems
   description 'Ruby on Rails'
+  # Change the Rails version here
   version '3.0.1'
 
   applications_directory = '/var/applications/'
