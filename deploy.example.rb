@@ -1,9 +1,9 @@
 # Set Application Name
-set :application, "life-enrich"
+set :application, "Application Name Here"
 
 # Set Repository
 set :scm, :subversion
-set :repository,  "http://inspiresynergy.svnrepository.com/svn/life-enrich/trunk"
+set :repository,  "http://path/to/repository"
 set :scm_username, Proc.new { Capistrano::CLI.password_prompt("SVN username please: ") }
 set :scm_password, Proc.new { Capistrano::CLI.password_prompt("SVN password for #{scm_username}, please: ") }
 
@@ -17,5 +17,8 @@ set :deploy_to, "/var/applications/#{application}"
 set :user, 'Server User Name Here'
 set :use_sudo, false
 # set :password, ''
-ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/id_Test"]
+# Set SSH Key Below
+ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/id_rsa"]
 # set :rake, "/opt/ruby1.8.7/bin/rake"
+
+require 'bundler/capistrano'
