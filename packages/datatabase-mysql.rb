@@ -1,8 +1,6 @@
 package :mysql, :provides => :database do
   describe 'MySQL Client and Server'
-  apt 'mysql-server mysql-client libmysqlclient15-dev libmysql-ruby libmysqlclient-dev' do
-    post :install, ""
-  end
+  apt 'mysql-server mysql-client libmysqlclient15-dev libmysql-ruby libmysqlclient-dev'
 
   verify do
     has_executable 'mysqld'

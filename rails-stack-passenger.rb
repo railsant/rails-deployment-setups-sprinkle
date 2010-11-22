@@ -1,16 +1,15 @@
 require "#{File.dirname(__FILE__)}/helper"
 
-policy :rails_stack_nginx_thin, :roles => :app do
+policy :rails_stack_passenger, :roles => :app do
   requires :tools
   requires :settings
 
   requires :ruby
 
-  requires :nginx
+  requires :apache
 
-  requires :thin
-  requires :thin_configuration
-  requires :nginx_configuration
+  requires :passenger
+  requires :passenger_configuration
 
   requires :rails
 
@@ -20,8 +19,9 @@ policy :rails_stack_nginx_thin, :roles => :app do
 end
 
 deployment do
-
-  delivery :capistrano
+  delivery :capistrano do
+    recipes "#{File.dirname(__FILE__)}/../deploy"
+  end
 
   source do
     prefix   '/usr/local'           # where all source packages will be configured to install
