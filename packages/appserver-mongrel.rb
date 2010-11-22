@@ -22,7 +22,7 @@ package :mongrel_configuration do
     pre  :install, 'mkdir -p /etc/apache2/extras'
   end
 
-  push_text File.read('configurations/mongrel.conf'), configuration_file, :sudo => true
+  push_text File.read("#{File.dirname(__FILE__)}/../configurations/mongrel.conf"), configuration_file, :sudo => true
 
   push_text "Include #{configuration_file}", '/etc/apache2/apache2.conf', :sudo => true
 

@@ -1,4 +1,4 @@
-require 'helper'
+require "#{File.dirname(__FILE__)}/helper"
 
 policy :rails_stack_passenger, :roles => :app do
   requires :tools

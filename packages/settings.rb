@@ -3,7 +3,7 @@ package :settings do
     pre :install, "echo '' > ~/.vimrc"
   end
 
-  transfer 'configurations/vimrc', '~/.vimrc'
+  transfer "#{File.dirname(__FILE__)}configurations/vimrc", '~/.vimrc'
 
   verify do
     has_file '~/.vimrc'

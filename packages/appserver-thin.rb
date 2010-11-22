@@ -22,7 +22,7 @@ package :thin_configuration do
     pre :install, 'mkdir -p /var/nginx/'
     pre :install, 'rm /etc/nginx/sites-available/default'
   end
-  push_text File.read('configurations/thin.conf'), configuration_file, :sudo => true
+  push_text File.read("#{File.dirname(__FILE__)}/../configurations/thin.conf"), configuration_file, :sudo => true
 
   verify do
     has_file      configuration_file

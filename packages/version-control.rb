@@ -7,3 +7,13 @@ package :git, :provides => :version_control do
     has_executable 'git'
   end
 end
+
+package :svn, :provides => :version_control do
+  description 'Subversion Version Control System'
+  
+  apt 'subversion'
+  
+  verify do
+    has_executable 'svn'
+  end
+end
