@@ -23,6 +23,15 @@ ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/id_rsa"]
 
 require 'bundler/capistrano'
 
+# Uncomment the following lines if you use the Passenger Server
+namespace :deploy do
+  task :start do; end
+  task :stop do; end
+  task :restart, :roles => :app, :except => {:no_release => true} do
+    sudo "touch #{release_path}/tmp/restart.txt"
+  end
+end
+
 # Uncomment the following lines if you use the Mongrel Server
 # set :mongrel_conf, "#{release_path}/config/mongrel_cluster.yml"
 # require 'mongrel_cluster/recipes'
@@ -32,7 +41,7 @@ namespace :deploy do
   namespace :db do
     desc 'Create the Production Database'
     task :create, :roles => :db do
-      run "cd #{release_path} && rake db:create RAILS_ENV=production"
+      run "cd #{deploy_to}/current && rake db:create RAILS_ENV=production"
     end
   end
 end
