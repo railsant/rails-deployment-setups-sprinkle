@@ -4,8 +4,12 @@ package :mongrel do
   version '1.2.0.pre2'
 
   gem 'mongrel', :version => version
+  gem 'mongrel_cluster'
 
-  verify { has_gem 'mongrel', '1.2.0.pre2' }
+  verify do
+    has_gem 'mongrel', '1.2.0.pre2'
+    has_gem 'mongrel_cluster'
+  end
 
   optional :mongrel_configuration
 end

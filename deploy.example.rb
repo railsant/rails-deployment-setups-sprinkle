@@ -22,3 +22,17 @@ ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/id_rsa"]
 # set :rake, "/opt/ruby1.8.7/bin/rake"
 
 require 'bundler/capistrano'
+
+# Uncomment the following lines if you use the Mongrel Server
+# set :mongrel_conf, "#{release_path}/config/mongrel_cluster.yml"
+# require 'mongrel_cluster/recipes'
+
+# Run cap deploy:db:create
+namespace :deploy do
+  namespace :db do
+    desc 'Create the Production Database'
+    task :create, :roles => :db do
+      run "cd #{release_path} && rake db:create RAILS_ENV=production"
+    end
+  end
+end

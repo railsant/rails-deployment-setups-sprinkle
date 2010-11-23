@@ -10,6 +10,7 @@ policy :rails_stack_apache_mongrel, :roles => :app do
   requires :apache
   # Install the App Server Mongrel, see packages/appserver-mongrel.rb
   requires :mongrel
+  # Please edit the configurations/mongrel.conf
   requires :mongrel_configuration
   # Install the gem Rails, Please change the version in packages/rails.rb
   requires :rails
@@ -29,5 +30,4 @@ deployment do
     archives '/usr/local/sources'   # where all source packages will be downloaded to
     builds   '/usr/local/build'     # where all source packages will be built
   end
-
 end
